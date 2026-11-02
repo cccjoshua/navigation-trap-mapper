@@ -1,0 +1,12 @@
+_ > nanoagent.plugin.v0001.ProductConfig:
+tagline: "Map every place on a website where a browsing agent gets stuck for good"
+summary: "A simulated website, built from a seed, hides loops, rings, pages with no links and funnels that lead only into them. The agent sees one page at a time, explores the links, and reports every page from which the target can never be reached. The answer is checked against reachability computed on the hidden graph."
+highlights:
+  - "Every site is rebuilt exactly from its seed, so any run can be reproduced"
+  - "The answer is checked with graph search on the hidden site: no model judges it"
+  - "Reports which trap pages were missed or wrongly reported, with a Jaccard score"
+steps:
+  - "Give a seed"
+  - "The agent explores the site link by link"
+  - "It reports every trap page it found"
+  - "The verifier compares the pages with the true traps and shows the verdict"
