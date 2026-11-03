@@ -24,7 +24,7 @@ TITLES = (
 )
 TRAP_KINDS = ("loop", "ring", "sink", "funnel")
 MAX_DEPTH = 6  # every reachable page is at most this many links from the start
-MAX_PAGES = 20  # the most pages one list_links call shows
+MAX_PAGES = 40  # the most pages one list_links call shows
 
 
 @dataclass(frozen=True)

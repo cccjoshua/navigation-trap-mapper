@@ -6,7 +6,7 @@ from collections import deque
 PAGE_ID = re.compile(r"^p\d{2}$")
 START = "p00"
 MAX_SEED = 1_000_000
-MAX_PAGES = 20
+MAX_PAGES = 40
 
 
 def result(valid, message, *, score=None, **details):

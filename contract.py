@@ -31,12 +31,13 @@ class SiteOutput(Output):
     seed: Annotated[int, SEED]
     start_page_id: Annotated[str, "The page exploration starts on"]
     target_page_id: Annotated[str, "The page every route should be able to reach"]
+    page_count: Annotated[int, "How many pages the site has: they are p00, p01, ... up to the last one, p followed by page_count minus 1"]
 
 
 @dataclass
 class PageInput(Output):
     seed: Annotated[int, SEED]
-    page_ids: Annotated[list[str], "The pages to list, 1 to 20 distinct page ids, e.g. [p00, p07]"]
+    page_ids: Annotated[list[str], "The pages to list, 1 to 40 distinct page ids, e.g. [p00, p07]"]
 
 
 @dataclass

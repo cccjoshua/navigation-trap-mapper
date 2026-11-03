@@ -14,7 +14,7 @@ links from the start, so an agent can explore the site in a handful of calls. No
 | Tool | Does | Code |
 |---|---|---|
 | `start_site` | Gives the start page and the target page | `src/plugin/tools.py` |
-| `list_links` | Shows up to 20 pages at once, each with its title and links and the page each link leads to | `src/plugin/tools.py` |
+| `list_links` | Shows up to 40 pages at once, each with its title and links and the page each link leads to | `src/plugin/tools.py` |
 | `map_graph` | The whole graph and its trap pages: the task's reference, never shown to the agent | `src/plugin/tools.py` |
 
 The site itself is built in `src/plugin/site.py`.

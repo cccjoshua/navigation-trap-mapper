@@ -120,7 +120,7 @@ def test_refuses_malformed_tool_input() -> None:
     assert verify_input("list_links", {"seed": 7, "page_ids": ["home"]})["valid"] is False
     assert verify_input("list_links", {"seed": 7, "page_ids": []})["valid"] is False
     assert verify_input("list_links", {"seed": 7, "page_ids": ["p03", "p03"]})["valid"] is False
-    assert verify_input("list_links", {"seed": 7, "page_ids": [f"p{n:02d}" for n in range(21)]})["valid"] is False
+    assert verify_input("list_links", {"seed": 7, "page_ids": [f"p{n:02d}" for n in range(41)]})["valid"] is False
     assert verify_input("start_site", {"seed": -5})["valid"] is False
     assert verify_input("map_graph", {"seed": 1_000_001})["valid"] is False
 

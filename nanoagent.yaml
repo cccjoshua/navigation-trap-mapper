@@ -1,7 +1,7 @@
 _ > nanoagent.plugin.v0001.ManifestConfig:
 id: navigation-trap-mapper
 name: Navigation Trap Mapper
-version: 0.1.0
+version: 0.1.1
 status: ready
 spec: nanoagent.plugin/v0001
 
@@ -18,9 +18,9 @@ permissions > nanoagent.plugin.v0001.PermissionsConfig:
 # One entry per contract.Tool; its input and output classes are contract.TOOLS's.
 tools > dict[contract.Tool, nanoagent.plugin.v0001.ToolConfig]:
   start_site:
-    description: Begin exploring a seed's simulated website, returning its start page and its target page
+    description: Begin exploring a seed's simulated website, returning its start page, its target page and how many pages it has
   list_links:
-    description: Show up to 20 pages of the seed's site at once, each with its title and every link on it with the page it leads to
+    description: Show up to 40 pages of the seed's site at once, each with its title and every link on it with the page it leads to
   map_graph:
     description: The whole link graph of a seed and its trap pages; the reference, never shown to the agent
 
@@ -32,7 +32,8 @@ tasks > dict[contract.Task, nanoagent.plugin.v0001.TaskConfig]:
     tools: [start_site, list_links]
     reference: map_graph
     instructions: |-
-      Call start_site with the seed to get the start page and the target page.
-      Explore the site with list_links, passing the seed and up to 20 page ids at once: start with the start page, then pass every page you have seen as a link but not listed yet, and repeat until every page reachable from the start page has been listed. No page is more than 6 links from the start, so this takes a few calls.
-      A trap page is a page reachable from the start page from which no sequence of links reaches the target page: loops, rings, pages with no links, and pages whose links only lead into such pages.
-      Submit trap_pages: every trap page id, each once. Do not include the target, pages that can reach the target, or pages you cannot reach from the start page.
+      Work in three steps: start the site, list every page, submit.
+      Step 1: call start_site with the seed. It returns the start page, the target page and page_count: the site's pages are p00, p01, ... up to p followed by page_count minus 1 (two digits).
+      Step 2: call list_links once with the seed and all page_count page ids (at most 40, all in one call). It returns every page's links.
+      Then work out the answer from those links. A trap page is a page reachable from the start page from which no sequence of links reaches the target page: loops, rings, pages with no links, and pages whose links only lead into such pages.
+      Step 3: submit trap_pages: every trap page id, each once. Do not include the target, pages that can reach the target, or pages you cannot reach from the start page.

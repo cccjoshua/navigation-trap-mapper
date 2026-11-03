@@ -1,4 +1,4 @@
-"""list_links: the links of up to 20 pages."""
+"""list_links: the links of up to 40 pages."""
 
 from .checks import MAX_PAGES, page_problem, result, seed_problem
 

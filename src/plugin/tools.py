@@ -10,7 +10,7 @@ from plugin.site import MAX_PAGES, build_site, trap_pages
 
 def start_site(given: SeedInput, workspace: Path) -> SiteOutput:
     site = build_site(given.seed)
-    return SiteOutput(seed=given.seed, start_page_id=site.start, target_page_id=site.target)
+    return SiteOutput(seed=given.seed, start_page_id=site.start, target_page_id=site.target, page_count=len(site.links))
 
 
 def list_links(given: PageInput, workspace: Path) -> LinksOutput:
